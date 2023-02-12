@@ -8,22 +8,25 @@ const BASE_URL = "https://my-json-server.typicode.com/m4yankchoudhary/demo/blogs
 const Front = () => {
     const [blogs, setBlogs] = useState()
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(true)
+    const [error, setError] = useState(false)
     useEffect(() => {
-        // makeAPICall()
+        
+        makeAPICall()
 
     }, [])
     const func1=()=>{
-        setLoading(true)
         setError(false)
+        setLoading(true)
         makeAPICall()
     }
     async function makeAPICall(){
+        
         await axios.get(BASE_URL).then((response) => {
             console.log(response)
-            setError(false)
             setBlogs(response.data);
             setLoading(false)
+            
+            
         }).catch((e) => {
             setError(true)
             console.log(e)
